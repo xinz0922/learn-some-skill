@@ -29,10 +29,6 @@ template指参考序列和比对上的序列共同组成的序列
 >2. FLAG    位标识，template mapping情况的数字表示，每一个数字代表一种比对情况，这里的值是符合情况的数字相加总和
 \# flag取值见下方备注表格
 >3. RNAME   参考序列的编号，如果注释中对SQ-SN进行了定义，这里必须和其保持一致，另外对于没有mapping上的序列，这里是'\*';
-
->>|flag value|Description|
->>|:-:|:-:|
->>|0x1|template has multiple segments|
 >4. POS   比对上的位置，注意是从1开始计数，没有比对上，此处为0;
 >5. 5. MAPQ     mapping的质量,，比对的质量分数，越高说明该read比对到参考基因组上的位置越唯一;
 \# eg.42
@@ -54,9 +50,25 @@ template指参考序列和比对上的序列共同组成的序列
 >12. 第十二列之后：Optional fields，以tab建分割。
 \# eg.AS:i:-1 XN:i:0 XM:i:1 XO:i:0 XG:i:0 NM:i:1 MD:Z:35T0 YT:Z:UU
 
+### flag description
+
+\#    以下数值用16进制表示，在识别flag前先回顾一下各大进制
+- 2进制，用两个阿拉伯数字：0、1；
+8进制，用八个阿拉伯数字：0、1、2、3、4、5、6、7；
+10进制，用十个阿拉伯数字：0到9；
+16进制，用十六个阿拉伯数字……等等，阿拉伯人或说是印度人，只发明了10个数字啊？
+16进制就是逢16进1，但我们只有0~9这十个数字，所以我们用A，B，C，D，E，F这六个字母来分别表示10，11，12，13，14，15。字母不区分大小写。
+十六进制数的第0位的权值为16的0次方，第1位的权值为16的1次方，第2位的权值为16的2次方……
 
 
 
-- 参考
+
+|flag value|Description|
+|:-:|:-:|
+|0x1|template has multiple segments|
+|0x2||
+
+-参考
 
 [主要来源为简书:https://www.jianshu.com/p/9c99e09630da](https://www.jianshu.com/p/9c99e09630da)
+[来源于简书：链接：https://www.jianshu.com/p/53167d7b811e](https://www.jianshu.com/p/53167d7b811e)
