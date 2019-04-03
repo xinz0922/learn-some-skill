@@ -96,8 +96,8 @@ bam文件是sam文件的二进制格式文件，两者格式相同，bam比sam�
 查看bam文件：`samtools view *.bam | less -S`
 
 文件转换：
--sam转bam `samtools view -bS sample1.sam > sample1.bam` 
--bam转sam `samtools view -h sample1.bam > sample1.sam`
+- sam转bam `samtools view -bS sample1.sam > sample1.bam` 
+- bam转sam `samtools view -h sample1.bam > sample1.sam`
 
 -参考
 
