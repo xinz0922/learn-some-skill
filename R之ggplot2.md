@@ -10,6 +10,7 @@
    * 初始化，展示绘图：ggplot、plot、print等
    * 真正绘图:stat_，geom_，annotate
    * 微调图型:aes,aes参数控制了对哪些变量进行图形映射，以及映射方式，图形属性，横纵坐标，点的大小、颜色，填充色等
+   
    ~~* **ggplot的公式：~~
    
    ggplot(data = , aes(x = , y = ，z = )) +geom_XXX(...) + ... + stat_XXX(...) + ... +annotate(...) + ... + labs(...) +scale_XXX(...) + coord_XXX(...) + guides(...) + theme(...) +facet_XXX(...)
