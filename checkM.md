@@ -27,3 +27,5 @@
 
 # 引用
 [checkM官网](https://ecogenomics.github.io/CheckM/)
+
+[checkM article](https://genome.cshlp.org/content/25/7/1043.full#F3)
