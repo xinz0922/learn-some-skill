@@ -29,16 +29,18 @@
 
 举例说明
 ```
-import numpy as np
+$ import numpy as np
 
-arr1 = np.array([[1,2,3],[4,5,6]])
+$ arr1 = np.array([[1,2,3],[4,5,6]])
 
-arr2 = np.array([[1,1,2],[2,2,3]])
+$ arr2 = np.array([[1,1,2],[2,2,3]])
 ```
-- 相加：`arr1 + arr2`
-- 相减：arr1 - arr2
-- 相乘：arr1 * arr2
-- 相除：arr1 / arr2  # 这样是商只取整数部分，如果想得到浮点数类型的商，需要设置矩阵的类型，只设置一个都可以，例如arr2 = np.array([[1,1,2],[2,2,3]]，dtype = float)
+- 相加：`$ arr1 + arr2`
+- 相减：`$ arr1 - arr2`
+- 相乘：`$ arr1 * arr2`
+- 相除：`$ arr1 / arr2  # 这样是商只取整数部分，如果想得到浮点数类型的商，需要设置矩阵的类型，只设置一个都可以，例如arr2 = np.array([[1,1,2],[2,2,3]]，dtype = float)`
+- 取整：`$ arr1 // arr2  #取整和int类型的数字相除的结果一样`
+- 取余：`$ arr1 % arr2`
 - 幂运算：arr1 ** arr2
 
 
