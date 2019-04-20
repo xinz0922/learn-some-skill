@@ -44,6 +44,7 @@ $ arr2 = np.array([[1,1,2],[2,2,3]])
 - 相减：`$ arr1 - arr2`
 - 相乘：`$ arr1 * arr2`
 - 相除：`$ arr1 / arr2  # 这样是商只取整数部分，如果想得到浮点数类型的商，需要设置矩阵的类型，只设置一个都可以，例如arr2 = np.array([[1,1,2],[2,2,3]]，dtype = float)`
+- 设置矩阵类型：`a= np.array([1,2,3],dtype=np.int32);a= np.array([1,2,3],dtype=float)`  # int32类型前必须要加np.,float前不用加np.
 - 取整：`$ arr1 // arr2  #取整和int类型的数字相除的结果一样`
 - 取余：`$ arr1 % arr2`
 - 幂运算：`$ arr1 ** arr2`
@@ -80,6 +81,8 @@ $ arr2 = np.array([[1,1,2],[2,2,3]])
 ### 随机数生成及矩阵的运算
 - 生成随机数矩阵
 ```> import numpy as np
+a = np.zeros((3,2))  # 生成3行2列的二维矩阵，元素全部为1
+a = np.ones((2，3))  # 生成2行3列的二维矩阵，元素全部为0
 a = np.random.random((2,3))   # 生成2行3列随机数矩阵，主需要一个参数，因此需要加括号
 b = np.random.normal(size=(3,2)) # 生成3行2列符合正态分布的随机数矩阵
 c = np.random.randint(0,10,size=(3,2)) # 生成3行2列大小在0-10之间的整数随机数矩阵，参数中至少要给出下线数字
