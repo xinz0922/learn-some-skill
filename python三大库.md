@@ -406,9 +406,10 @@ import numpy as np
 
 **附录**
 
-1. date_range*
+1. date_range
 
 设置包含一系列时间数据的列表，有多个参数
+   
    * pandas.date_range(start=None, end=None, periods=None, freq='D', tz=None, normalize=False, name=None, closed=None, **kwargs)
    * 
    
@@ -416,4 +417,5 @@ import numpy as np
 # 参考
 
 [B站课程——AI_MOOC]（https://www.bilibili.com/video/av38355831/?p=6）
+
 [博客——pandas中时间序列——date_range函数](https://blog.csdn.net/kancy110/article/details/77131539)
