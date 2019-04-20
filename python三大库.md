@@ -357,8 +357,63 @@ array([50,  2,  3])
 
 ## pandas
 
+pandas可以说是numpy的扩展，numpy处理的数据一般是矩阵（列表），pandas处理的数据一般是字典
 
+### 函数(pandas.函数名())
+```
+import pandas as pd
+import numpy as np
+```
+
+|函数名|语法|功能|
+|:-:|:-:|:-:|
+|Series|pd.Series(list,index=)|设置n行1列的一维矩阵内容 ，可以指定列表的index，如果不指定则index为0-（n-1）的数字|
+||||
+||||
+||||
+||||
+||||
+||||
+||||
+||||
+||||
+||||
+||||
+||||
+||||
+||||
+||||
+||||
+||||
+||||
+||||
+||||
+||||
+||||
+||||
+
+
+
+
+
+
+
+
+
+
+
+
+
+**附录**
+
+1. date_range*
+
+设置包含一系列时间数据的列表，有多个参数
+   * pandas.date_range(start=None, end=None, periods=None, freq='D', tz=None, normalize=False, name=None, closed=None, **kwargs)
+   * 
+   
 
 # 参考
 
 [B站课程——AI_MOOC]（https://www.bilibili.com/video/av38355831/?p=6）
+[博客——pandas中时间序列——date_range函数](https://blog.csdn.net/kancy110/article/details/77131539)
