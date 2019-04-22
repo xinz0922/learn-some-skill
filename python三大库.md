@@ -368,8 +368,8 @@ import numpy as np
 |函数名|语法|功能|
 |:-:|:-:|:-:|
 |Series|pd.Series(list,index=)|设置n行1列的一维矩阵内容 ，可以指定列表的index，如果不指定则index为0-（n-1）的数字|
-||||
-||||
+|\*date_range|dates = pd.date_range(start='',periods=6,freq='2d')|生成一个间隔为2天的包含6个元素的时间序列|
+|\*DataFrame|pd.DataFrame(np.random.randint(100,size=(6,4)),index=dates,columns = ['A','B','C','D'])|生成一个6行4列的矩阵，index设置行名，columns设置列名，不设置行列名时，默认从0开始计数|
 ||||
 ||||
 ||||
@@ -411,8 +411,17 @@ import numpy as np
 设置包含一系列时间数据的列表，有多个参数
    
    * pandas.date_range(start=None, end=None, periods=None, freq='D', tz=None, normalize=False, name=None, closed=None, **kwargs)
-   * 
-   
+   * periods：固定时期，取值为整数或None
+   * freq：日期偏移量，取值为string或DateOffset，默认为'D',也可以为s（秒），h（小时）
+   * normalize：若参数为True表示将start、end参数值正则化到午夜时间戳
+   * name：生成时间索引对象的名称，取值为string或None
+2. DataFrame
+
+生成一个矩阵，使用很灵活
+
+`df2 = pd.DataFrame({'A':1.,'B':pd.Timestamp('20190422'),'C':pd.Series(1,index=list(range(4))),'D':np.array([3]*4),'E':pd.Categorical(['test','train','test','train']),'F':'foo'})`
+
+* 上述代码用来生成一个4行6列的矩阵，
 
 # 参考
 
