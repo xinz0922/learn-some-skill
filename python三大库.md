@@ -574,6 +574,7 @@ Name: 2019-04-22 00:00:00, dtype: bool
 
    7. 设置数值
 ```
+>>>df = pd.DataFrame(np.random.randint(100,size=(6,4)),index=pd.date_range(start='20190422',periods=6,freq='3d'),columns=['A','B','C','D'])
 >>> df
              A   B   C   D
 2019-04-22  52  87  39  38
@@ -747,7 +748,37 @@ Name: 2019-04-22 00:00:00, dtype: bool
 2019-05-04  50  56  90  37.0
 2019-05-07  56  89  44  24.0
 
+>>> df
+             A   B     C   D
+2019-04-22  82  71  70.0  78
+2019-04-25  73  92   NaN   0
+2019-04-28   5  99  84.0  16
+2019-05-01  62   9  77.0   6
+2019-05-04  14  89  48.0  44
+2019-05-07   4  29  76.0  56
+>>> df.isnull()      # 判断df的哪个value是空值
+                A      B      C      D
+2019-04-22  False  False  False  False
+2019-04-25  False  False   True  False
+2019-04-28  False  False  False  False
+2019-05-01  False  False  False  False
+2019-05-04  False  False  False  False
+2019-05-07  False  False  False  False
+>>>
+>>> np.any(df.isnull() == True)
+A    False
+B    False
+C     True
+D    False
+dtype: bool
 ```
+
+
+
+
+
+
+
 
 
 **附录**
