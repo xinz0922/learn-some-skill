@@ -381,9 +381,9 @@ import numpy as np
 |loc|data.loc[<row selection>, <column selection>]|可以根据data的行列标签对数据进行筛选|
 |dropna|pd.dropna(axis=0/1,how='any'/'all')|除去DataFrame中的空值|
 |fillna|pd.fillna(value=0)|将df中值为nan的values赋值为0|
-|isnull|||
-||||
-||||
+|isnull|df.isnull|将df的values根据是否为nan来判断，输出True或者False，为nan的输出True|
+|join|join='outer'/join='inner',具体看综合练习9|矩阵合并是否输出不一致的行或者列|
+|join_axes|join_axes[df1.index],具体看综合练习9|按照哪一个矩阵的index进行合并，输出的矩阵和该矩阵一样|
 ||||
 ||||
 ||||
@@ -402,7 +402,7 @@ import numpy as np
 
 
 
-### 综合练习
+### 综合练习（DataFrame：二维标记数据结构）
 1. 筛选数据
 
    1. 创建数据框
@@ -765,14 +765,116 @@ Name: 2019-04-22 00:00:00, dtype: bool
 2019-05-04  False  False  False  False
 2019-05-07  False  False  False  False
 >>>
->>> np.any(df.isnull() == True)
-A    False
-B    False
-C     True
-D    False
-dtype: bool
+>>> np.any(df.isnull() == True)  # 判断df中是否有为nan的值，如果有返回True，如果没有返回False
+True
+>>>
+
 ```
 
+   9. 矩阵的合并
+```
+>>> df1 = pd.DataFrame(np.zeros((3,4)),columns=['a','b','c','d'])    # np.zeros((3,4))，生成3行4列values全部为0的二维矩阵
+>>> df1
+     a    b    c    d
+0  0.0  0.0  0.0  0.0
+1  0.0  0.0  0.0  0.0
+2  0.0  0.0  0.0  0.0
+>>> df2 = pd.DataFrame(np.ones((3,4)),columns=['a','b','c','d'])     # np.ones((3,4))，生成3行4列values全部为1的二维矩阵
+>>> df2
+     a    b    c    d
+0  1.0  1.0  1.0  1.0
+1  1.0  1.0  1.0  1.0
+2  1.0  1.0  1.0  1.0
+>>> df3 = pd.DataFrame(np.ones((3,4))*2,columns=['a','b','c','d'])      # np.ones((3,4))*2，生成3行4列values全部为2的二维矩阵
+>>> df3
+     a    b    c    d
+0  2.0  2.0  2.0  2.0
+1  2.0  2.0  2.0  2.0
+2  2.0  2.0  2.0  2.0
+>>> res = pd.concat([df1,df2,df3],axis=0)    # axie=0,表明j将行顺次合并在一起，输入的第一个参数是列表类型，列表内容需要合并的矩阵名
+>>> res
+     a    b    c    d
+0  0.0  0.0  0.0  0.0
+1  0.0  0.0  0.0  0.0
+2  0.0  0.0  0.0  0.0
+0  1.0  1.0  1.0  1.0
+1  1.0  1.0  1.0  1.0
+2  1.0  1.0  1.0  1.0
+0  2.0  2.0  2.0  2.0
+1  2.0  2.0  2.0  2.0
+2  2.0  2.0  2.0  2.0
+>>>
+>>> res = pd.concat([df1,df2,df3],axis=0,ignore_index=True)    # ignore_index=True表明忽略原本的index，重新建立index
+>>> res
+     a    b    c    d
+0  0.0  0.0  0.0  0.0
+1  0.0  0.0  0.0  0.0
+2  0.0  0.0  0.0  0.0
+3  1.0  1.0  1.0  1.0
+4  1.0  1.0  1.0  1.0
+5  1.0  1.0  1.0  1.0
+6  2.0  2.0  2.0  2.0
+7  2.0  2.0  2.0  2.0
+8  2.0  2.0  2.0  2.0
+
+# 合并行列名不完全一致的矩阵
+>>> df1 = pd.DataFrame(np.zeros((3,4)),columns=['a','b','c','d'],index=[0,1,2])
+>>> df1
+     a    b    c    d
+0  0.0  0.0  0.0  0.0
+1  0.0  0.0  0.0  0.0
+2  0.0  0.0  0.0  0.0
+>>> df2 = pd.DataFrame(np.ones((3,4)),columns=['a','c','d','e'],index=[2,3,4])
+>>> df2
+     a    c    d    e
+2  1.0  1.0  1.0  1.0
+3  1.0  1.0  1.0  1.0
+4  1.0  1.0  1.0  1.0
+>>> pd.concat([df1,df2],axis=1)     # 最终列数增加
+     a    b    c    d    a    c    d    e
+0  0.0  0.0  0.0  0.0  NaN  NaN  NaN  NaN
+1  0.0  0.0  0.0  0.0  NaN  NaN  NaN  NaN
+2  0.0  0.0  0.0  0.0  1.0  1.0  1.0  1.0
+3  NaN  NaN  NaN  NaN  1.0  1.0  1.0  1.0
+4  NaN  NaN  NaN  NaN  1.0  1.0  1.0  1.0
+>>> pd.concat([df1,df2],axis=0)     # 行堆叠在一起，最终的行数增加
+     a    b    c    d    e
+0  0.0  0.0  0.0  0.0  NaN
+1  0.0  0.0  0.0  0.0  NaN
+2  0.0  0.0  0.0  0.0  NaN
+2  1.0  NaN  1.0  1.0  1.0
+3  1.0  NaN  1.0  1.0  1.0
+4  1.0  NaN  1.0  1.0  1.0
+>>> pd.concat([df1,df2],axis=0,join='outer')    # join的默认为'outer'，相同列合并，没有的values用nan填充
+     a    b    c    d    e
+0  0.0  0.0  0.0  0.0  NaN
+1  0.0  0.0  0.0  0.0  NaN
+2  0.0  0.0  0.0  0.0  NaN
+2  1.0  NaN  1.0  1.0  1.0
+3  1.0  NaN  1.0  1.0  1.0
+4  1.0  NaN  1.0  1.0  1.0
+>>> pd.concat([df1,df2],axis=0,join='inner')    # 当join为'inner'时，只合并出列（或者行）相同的
+     a    c    d
+0  0.0  0.0  0.0
+1  0.0  0.0  0.0
+2  0.0  0.0  0.0
+2  1.0  1.0  1.0
+3  1.0  1.0  1.0
+4  1.0  1.0  1.0
+>>> pd.concat([df1,df2],axis=0,join='outer',ignore_index=True)    # 忽略原始的index，重新建立index，防止index的重复
+     a    b    c    d    e
+0  0.0  0.0  0.0  0.0  NaN
+1  0.0  0.0  0.0  0.0  NaN
+2  0.0  0.0  0.0  0.0  NaN
+3  1.0  NaN  1.0  1.0  1.0
+4  1.0  NaN  1.0  1.0  1.0
+5  1.0  NaN  1.0  1.0  1.0
+>>> pd.concat([df1,df2],axis=1,join_axes=[df1.index])    # 按照df1的index进行合并，最后输出的矩阵index和df1的相同
+     a    b    c    d    a    c    d    e
+0  0.0  0.0  0.0  0.0  NaN  NaN  NaN  NaN
+1  0.0  0.0  0.0  0.0  NaN  NaN  NaN  NaN
+2  0.0  0.0  0.0  0.0  1.0  1.0  1.0  1.0
+```
 
 
 
