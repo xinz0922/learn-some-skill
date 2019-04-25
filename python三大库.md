@@ -925,6 +925,6 @@ dtype: int64
 
 # 参考
 
-[B站课程——AI_MOOC]（https://www.bilibili.com/video/av38355831/?p=6）
+[B站课程——AI_MOOC](https://www.bilibili.com/video/av38355831/?p=6)
 
 [博客——pandas中时间序列——date_range函数](https://blog.csdn.net/kancy110/article/details/77131539)
