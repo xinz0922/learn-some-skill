@@ -896,7 +896,102 @@ dtype: int64
 ```
 
    10. 矩阵的merge
+```
+>>> left = pd.DataFrame({'key':['K0','K1','K2','K3'],'A':['A0','A1','A2','A3'],'B':['B0','B1','B2','B3']})
+>>> left
+    A   B key
+0  A0  B0  K0
+1  A1  B1  K1
+2  A2  B2  K2
+3  A3  B3  K3
+>>> right = pd.DataFrame({'key':['K0','K1','K2','K3'],'C':['C0','C1','C2','C3'],'D':['D0','D1','D2','D3']})
+>>> right
+    C   D key
+0  C0  D0  K0
+1  C1  D1  K1
+2  C2  D2  K2
+3  C3  D3  K3
+>>> pd.merge(left,right,on='key')     # on表示对哪一列进行合并
+    A   B key   C   D
+0  A0  B0  K0  C0  D0
+1  A1  B1  K1  C1  D1
+2  A2  B2  K2  C2  D2
+3  A3  B3  K3  C3  D3
 
+>>> t1
+    A   B key1 key2
+0  A0  B0   K0   K0
+1  A1  B1   K1   K1
+2  A2  B2   K1   K0
+3  A3  B3   K2   K1
+>>> t2
+    C   D key1 key2
+0  C0  D0   K0   K0
+1  C1  D1   K1   K0
+2  C2  D2   K1   K0
+3  C3  D3   K2   K0
+>>> pd.merge(t1,t2,on=['key1','key2'])
+    A   B key1 key2   C   D
+0  A0  B0   K0   K0  C0  D0
+1  A2  B2   K1   K0  C1  D1
+2  A2  B2   K1   K0  C2  D2
+
+# how可以有四种参数['inner','outer','left','right'],其中inner为默认参数，表示只输出有相同值的那些行，outer指输出所有的行，right（left）指基于右边（左边）的矩阵的key进行填充
+>>> pd.merge(t1,t2,on=['key1','key2'],how='outer')    
+     A    B key1 key2    C    D
+0   A0   B0   K0   K0   C0   D0
+1   A1   B1   K1   K1  NaN  NaN
+2   A2   B2   K1   K0   C1   D1
+3   A2   B2   K1   K0   C2   D2
+4   A3   B3   K2   K1  NaN  NaN
+5  NaN  NaN   K2   K0   C3   D3
+
+>>> df1 =pd.DataFrame({'col1':[0,1],'col_left':['a','b']})
+>>> df2 = pd.DataFrame({'col1':[1,2,2],'col_right':[2,2,2]})
+>>> df1
+   col1 col_left
+0     0        a
+1     1        b
+>>> df2
+   col1  col_right
+0     1          2
+1     2          2
+2     2          2
+>>> pd.merge(df1,df2,on='col1',how='outer',indicator = True)      # indicator默认为False，为True时表示显示出矩阵每一行merge的情况
+   col1 col_left  col_right      _merge
+0     0        a        NaN   left_only
+1     1        b        2.0        both
+2     2      NaN        2.0  right_only
+3     2      NaN        2.0  right_only
+>>> pd.merge(df1,df2,on='col1',how='outer',indicator = 'indicators')    # indicator的那一列改名字
+   col1 col_left  col_right  indicators
+0     0        a        NaN   left_only
+1     1        b        2.0        both
+2     2      NaN        2.0  right_only
+3     2      NaN        2.0  right_only
+
+
+>>> boys = pd.DataFrame({'k':['K0','K1','K2'],'age':[3,4,5]})
+>>> girls = pd.DataFrame({'k':['K4','K1','K7'],'age':[10,20,15]})
+>>> girls
+   age   k
+0   10  K4
+1   20  K1
+2   15  K7
+>>> boys
+   age   k
+0    3  K0
+1    4  K1
+2    5  K2
+>>> pd.merge(boys,girls,on='k',suffixes=['_boy','_girl'],how='outer',indicator=True)      # suffixes为后缀名，改columns一样的列名
+   age_boy   k  age_girl      _merge
+0      3.0  K0       NaN   left_only
+1      4.0  K1      20.0        both
+2      5.0  K2       NaN   left_only
+3      NaN  K4      10.0  right_only
+4      NaN  K7      15.0  right_only
+
+```
 
 
 
