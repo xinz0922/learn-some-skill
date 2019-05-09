@@ -7,7 +7,7 @@
    5. [编写Python程序](#编写Python程序)
    6. [python2 vs python3](#python2 vs python3)
 
-# 前期铺垫
+# 前期铺垫df
 
 1. python出现
    * Gudio van Rossum1989年为了打发无聊的圣诞，编写了Python解释器，它是用C语言实现的，并能够调用C语言的库文件。
