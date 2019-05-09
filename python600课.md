@@ -5,7 +5,10 @@
    3. [Python设计目标](#Python设计目标)
    4. [Python特点](#Python特点)
    5. [编写Python程序](#编写Python程序)
-   6. [python2 vs python3](#python2 vs python3)
+   6. [python2 vs python3](#python2vspython3)
+   7. [ipython——交互式解释器](#ipython——交互式解释器)
+   8. [集成开发环境](#集成开发环境)
+[程序开始编写了](#程序开始编写了)
 
 # 前期铺垫df
 
@@ -36,10 +39,29 @@
    * 解释器：Python2.X Python3.X
    * 交互式：ipython
    * 集成开发环境:pycharm   可以图形界面可视化
-6. python2 vs python3
+6. python2vspython3
    * Python2.X不支持中文，Python3.X支持中文，可以调用解释器python3 script.py  ，用python3解释script.py的程序
    * Python3.X和Python2.X差异不大，主要在于底层设计的优化
    * 在Python3.0推出之后，又推出了2.6及2.7的兼容版本，这两个兼容版本可以完全涵盖python2.X，同时又部分兼容3.0，所以当有些第三方库不支持python3.0时，仍然推荐使用3.0开发，但是可以在python2.7（Python的最后一款2.X）来解释
+7. ipython——交互式解释器
+   * 支持自动补全
+   * 支持自动缩进
+   * 支持shell命令
+   * 有很多函数和包
+8. 集成开发环境
+   * （integrated development environment，IDE），推荐PyCharm，好用
+   
+# 程序开始编写了
+1. 注释
+   * 单行注释
+   
+   由'#'开头，后接一个空格（保证格式整齐），然后可以写注释内容（中英文都可以）
+   
+   Python解释器看到"#"后会认为后面内容为说明性的语言，直接跳过而不执行
+   `# 这是注释`
+   - 多行注释
+
+
 # 
    
 
