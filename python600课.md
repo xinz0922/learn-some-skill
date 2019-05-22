@@ -100,10 +100,48 @@
 4. 格式化
 - 格式化字符串指在需要输出的字符串在变量的位置用%s（%d、%f）等格式化符号先占上位置，然后才能被用来格式化
 - "格式化字符串" % (变量1，变量2，变量3)
+   1. %06d     \# 6表示6位整数，0表示不到6位的用0补齐 
    
+   ```
+   In [2]: print("我的学号是%06d" % student)
+   我的学号是000001
+   ```
+   2. %.2f     \# 2表示小数点后保留两位
+  
+   ```
+   In [22]: student= 0.08
+   In [23]: print("我的学号是%.2f" % student)
+   我的学号是0.08
+   ```
+   - 如果换成%.1f的话，会四舍五入
    
+   ```
+   In [27]: student= 0.05
+   In [28]: print("我的学号是%.2f" % student)
+   我的学号是0.05
+   In [29]: print("我的学号是%.1f" % student)
+   我的学号是0.1
+   ```
+   3. %% 表示输出% 
    
-   
+   ```
+   In [32]: print("我的学号是%.1f%%" % (student*100))
+   我的学号是5.0%
+   ```
+ 
+ 
+5. 标识符：变量或者函数的名字
+- 可以由字母、数字、下划线组成
+- 数字不能作为开头
+- 不能和关键字重名
+
+6. 关键字：Python内部已经是用的标识符，具有特殊的含义和功能
+
+```
+In [35]: import keyword    # 倒入keyword模块
+In [36]: print(keyword.kwlist)      # 查看关键字有哪些
+['False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
+```
    
    
    
