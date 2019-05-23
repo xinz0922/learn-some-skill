@@ -142,9 +142,15 @@ In [35]: import keyword    # 倒入keyword模块
 In [36]: print(keyword.kwlist)      # 查看关键字有哪些
 ['False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
 ```
+
+7. 逻辑运算
+- 逻辑运算符可以把多个条件按照逻辑进行连接，编程更复杂的条件
+- and or not——————并且 或者 非
+   - and：两个条件都成立才成立
+   - or：两个条件有一个成立即为成立
+   - not：取反
    
-   
-   
+
    
    
    
