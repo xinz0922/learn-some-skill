@@ -175,6 +175,11 @@ In [36]: print(keyword.kwlist)      # 查看关键字有哪些
       print(s,i)
 ```
 
+9. print 函数
+- 默认输出时在末尾自动增加换行，可以通过加一个语句：end=""使得输出后不会自动换行，例如：print("输出内容"，end="")
+   - 将end = "--"，表示将原本的换行符替换成"--",符合也可以换成别的，例如下图
+   - ![](http://prl9niawf.bkt.clouddn.com/FsllJZU5u9KYQplfZdkFy0pb60vg)
+   - ![](http://prl9niawf.bkt.clouddn.com/FrsExy8Bu7Uw127eiqkd3iGoumQe)
 
 
    
