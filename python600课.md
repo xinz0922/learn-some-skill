@@ -161,8 +161,22 @@ In [36]: print(keyword.kwlist)      # 查看关键字有哪些
 - 关键字：
    - break：不执行循环体后续代码，跳出整个循环体，直接到达下一步程序
    - continue：不执行循环体后续代码，直接跳回到while条件判断，因此**在continue前一定要做和在下一步程序中一样要做的条件判断值的更改**
-
    
+``` 
+      i = 0
+      s = 0
+      while i < 101:
+         if i %2 == 0:
+            s += i
+         else:
+            i += 1      # continue之前必须要做的，否则会陷入死循环
+            continue
+         i += 1
+      print(s,i)
+```
+
+
+
    
    
    
