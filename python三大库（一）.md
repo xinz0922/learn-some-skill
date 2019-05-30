@@ -384,18 +384,6 @@ import numpy as np
 |isnull|df.isnull|将df的values根据是否为nan来判断，输出True或者False，为nan的输出True|
 |join|join='outer'/join='inner',具体看综合练习9|矩阵合并是否输出不一致的行或者列|
 |join_axes|join_axes[df1.index],具体看综合练习9|按照哪一个矩阵的index进行合并，输出的矩阵和该矩阵一样|
-||||
-||||
-||||
-||||
-||||
-||||
-||||
-||||
-||||
-||||
-||||
-||||
 
 
 
@@ -993,6 +981,41 @@ dtype: int64
 
 ```
 
+## 开启新课程
+
+1. 创建文件
+
+   ```
+   $ import pandas as pd
+   $ import numpy as np
+   $ df =pd.DataFrame()
+   $ df.to_excel("/p200/husn_group/zhengxin/practice.xslx")    # 在这一步会生成文件到该路径下，但不知道为什么我没做成功
+   $ df = pd.DataFrame({'ID':[1,2,3],'name':['Tim','Victor','Nick']})
+   $ df
+   In [26]: df
+   Out[26]:
+      ID    name
+   0   1     Tim
+   1   2  Victor
+   2   3    Nick
+   
+   $ df.set_index('ID')    # 建立索引，也可以说是行名
+   Out[28]:
+         name
+   ID
+   1      Tim
+   2   Victor
+   3     Nick
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 
 
 
